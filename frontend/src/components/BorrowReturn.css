@@ -1,0 +1,72 @@
+.borrow-return {
+  padding: 20px 0;
+}
+
+.borrow-return-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.form-group select {
+  width: 100%;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.loans-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.loans-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.loans-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.loans-table td {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.loans-table tbody tr:hover {
+  background: var(--light);
+}
+
+@media (max-width: 768px) {
+  .borrow-return-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .loans-table {
+    font-size: 14px;
+  }
+
+  .loans-table th,
+  .loans-table td {
+    padding: 8px;
+  }
+}

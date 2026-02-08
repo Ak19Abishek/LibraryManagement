@@ -1,0 +1,15 @@
+[
+  {
+    "id": "a2081d9b-0428-4746-8ab2-5fc335adf7ac",
+    "title": "it",
+    "author": "abii",
+    "isbn": "123",
+    "category": "Fiction",
+    "publishYear": 2026,
+    "totalCopies": 1,
+    "description": "tech",
+    "coverImage": "📖",
+    "availableCopies": 1,
+    "createdAt": "2026-02-07T16:48:30.262Z"
+  }
+]

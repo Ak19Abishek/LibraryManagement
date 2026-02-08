@@ -1,0 +1,96 @@
+.member-management {
+  padding: 20px 0;
+}
+
+.members-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.members-header h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.members-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.members-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.members-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.members-table td {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.members-table tbody tr:hover {
+  background: var(--light);
+}
+
+.members-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.members-table strong {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .members-table {
+    font-size: 14px;
+  }
+
+  .members-table th,
+  .members-table td {
+    padding: 12px;
+  }
+}
