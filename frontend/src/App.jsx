@@ -8,7 +8,8 @@ import MemberManagement from './components/MemberManagement';
 import BorrowReturn from './components/BorrowReturn';
 import './App.css';
 
-const socket = io('http://localhost:5000');
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+const socket = io(BACKEND_URL);
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -27,7 +28,7 @@ function App() {
     <div className="app-container">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="main-content">
-        {activeTab === 'dashboard' && <Dashboard socket={socket} />}
+        {activeTab === 'dashboard' && <Dashboard socket={socket} setActiveTab={setActiveTab} />}
         {activeTab === 'books' && <BookCatalog socket={socket} />}
         {activeTab === 'members' && <MemberManagement socket={socket} />}
         {activeTab === 'borrow' && <BorrowReturn socket={socket} />}

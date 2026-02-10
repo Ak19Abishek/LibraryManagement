@@ -32,6 +32,34 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
+.stat-card.clickable-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.stat-card.clickable-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+.card-action-hint {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #d1d5db;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.stat-card.clickable-card:hover .card-action-hint {
+  color: var(--primary);
+  transform: translateY(-50%) translateX(4px);
+  font-size: 28px;
+}
+
 .stat-icon {
   width: 60px;
   height: 60px;
@@ -71,6 +99,10 @@
   margin: 0;
   font-size: 32px;
   font-weight: 700;
+  color: var(--primary);
+}
+
+.stat-card.clickable-card:hover .stat-content h3 {
   color: var(--primary);
 }
 

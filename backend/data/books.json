@@ -11,5 +11,57 @@
     "coverImage": "📖",
     "availableCopies": 1,
     "createdAt": "2026-02-07T16:48:30.262Z"
+  },
+  {
+    "id": "be8c0b1a-5593-4bd8-aca2-5c5b149db07a",
+    "title": "thirukural",
+    "author": "Thiruvalluvar",
+    "isbn": "01",
+    "category": "Fiction",
+    "publishYear": 2025,
+    "totalCopies": 2,
+    "description": "",
+    "coverImage": "📖",
+    "availableCopies": 1,
+    "createdAt": "2026-02-08T06:53:03.032Z"
+  },
+  {
+    "id": "19ef47a1-acb0-45b6-af8f-ffa5cccb887a",
+    "title": "Money Multiplication",
+    "author": "AK Abishek ",
+    "isbn": "02",
+    "category": "Self-Help",
+    "publishYear": 2026,
+    "totalCopies": 2,
+    "description": "",
+    "coverImage": "📖",
+    "availableCopies": 2,
+    "createdAt": "2026-02-08T07:17:02.279Z"
+  },
+  {
+    "id": "e9094635-d497-4506-99db-97e2d8ed98e9",
+    "title": "அன்பு",
+    "author": "Abii",
+    "isbn": "03",
+    "category": "Biography",
+    "publishYear": 2026,
+    "totalCopies": 20,
+    "description": "",
+    "coverImage": "📖",
+    "availableCopies": 20,
+    "createdAt": "2026-02-08T07:18:52.611Z"
+  },
+  {
+    "id": "7b7c8f3d-3c9c-4a09-ba3d-3f4a7e3a4c77",
+    "title": "Thirukural",
+    "author": "Thiruvalluvar",
+    "isbn": "01",
+    "category": "Self-Help",
+    "publishYear": 2026,
+    "totalCopies": 2,
+    "description": "",
+    "coverImage": "📖",
+    "availableCopies": 2,
+    "createdAt": "2026-02-10T15:00:34.825Z"
   }
 ]

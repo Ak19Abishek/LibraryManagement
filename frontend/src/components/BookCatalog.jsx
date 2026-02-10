@@ -7,6 +7,7 @@ function BookCatalog({ socket }) {
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     title: '',
@@ -111,7 +112,12 @@ function BookCatalog({ socket }) {
             <p className="no-data">No books found. Start by adding a new book!</p>
           ) : (
             filteredBooks.map(book => (
-              <div key={book.id} className="book-card">
+              <div 
+                key={book.id} 
+                className="book-card clickable"
+                onClick={() => setSelectedBook(book)}
+                title="Click to view details"
+              >
                 <div className="book-cover">{book.coverImage}</div>
                 <h3>{book.title}</h3>
                 <p className="book-author">by {book.author}</p>
@@ -129,7 +135,10 @@ function BookCatalog({ socket }) {
                   <button 
                     className="btn-icon btn-danger" 
                     title="Delete"
-                    onClick={() => handleDeleteBook(book.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteBook(book.id);
+                    }}
                   >
                     <Trash2 size={16} />
                   </button>
@@ -230,6 +239,89 @@ function BookCatalog({ socket }) {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {selectedBook && (
+          <div className="modal" onClick={() => setSelectedBook(null)}>
+            <div className="modal-content details-modal" onClick={(e) => e.stopPropagation()}>
+              <button 
+                className="modal-close"
+                onClick={() => setSelectedBook(null)}
+              >
+                ✕
+              </button>
+              <div className="book-details">
+                <div className="detail-header">
+                  <div className="detail-cover-large">{selectedBook.coverImage}</div>
+                  <div className="detail-title-section">
+                    <h2>{selectedBook.title}</h2>
+                    <p className="detail-author">by {selectedBook.author}</p>
+                    <div className="detail-badges">
+                      <span className="badge category">{selectedBook.category}</span>
+                      <span className="badge year">{selectedBook.publishYear}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="detail-section">
+                  <h3>📖 Book Information</h3>
+                  <div className="detail-grid">
+                    <div className="detail-item">
+                      <span className="label">ISBN:</span>
+                      <span className="value">{selectedBook.isbn || 'N/A'}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="label">Category:</span>
+                      <span className="value">{selectedBook.category}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="label">Publish Year:</span>
+                      <span className="value">{selectedBook.publishYear}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="label">Total Copies:</span>
+                      <span className="value">{selectedBook.totalCopies}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="detail-section">
+                  <h3>📚 Stock Information</h3>
+                  <div className="stock-info">
+                    <div className="stock-item">
+                      <span className="stock-label">Available Copies:</span>
+                      <span className={`stock-value ${selectedBook.availableCopies > 0 ? 'in-stock' : 'out-of-stock'}`}>
+                        {selectedBook.availableCopies}/{selectedBook.totalCopies}
+                      </span>
+                    </div>
+                    <div className="stock-bar">
+                      <div 
+                        className="stock-fill"
+                        style={{width: `${(selectedBook.availableCopies / selectedBook.totalCopies) * 100}%`}}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                {selectedBook.description && (
+                  <div className="detail-section">
+                    <h3>📝 Description</h3>
+                    <p className="description-text">{selectedBook.description}</p>
+                  </div>
+                )}
+
+                <div className="detail-actions">
+                  <button className="btn btn-primary">Borrow This Book</button>
+                  <button 
+                    className="btn btn-secondary"
+                    onClick={() => setSelectedBook(null)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}

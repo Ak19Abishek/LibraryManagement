@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "f9c00a41-0681-488e-b730-125fe387bf2c",
+    "bookId": "be8c0b1a-5593-4bd8-aca2-5c5b149db07a",
+    "memberId": "1a845fa5-3587-40d0-8840-67bc50afbc8f",
+    "borrowDate": "2026-02-08T06:53:46.451Z",
+    "dueDate": "2026-02-22T06:53:46.450Z",
+    "status": "borrowed"
+  }
+]

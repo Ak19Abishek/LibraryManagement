@@ -6,6 +6,7 @@ import './MemberManagement.css';
 function MemberManagement({ socket }) {
   const [members, setMembers] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
@@ -95,7 +96,12 @@ function MemberManagement({ socket }) {
                 </tr>
               ) : (
                 members.map(member => (
-                  <tr key={member.id}>
+                  <tr 
+                    key={member.id}
+                    className="clickable-row"
+                    onClick={() => setSelectedMember(member)}
+                    title="Click to view details"
+                  >
                     <td>
                       <strong>{member.name}</strong>
                     </td>
@@ -106,7 +112,7 @@ function MemberManagement({ socket }) {
                     <td>
                       <span className="badge badge-success">{member.status}</span>
                     </td>
-                    <td>
+                    <td onClick={(e) => e.stopPropagation()}>
                       <button className="btn-icon btn-danger" title="Remove">
                         <Trash2 size={16} />
                       </button>
@@ -201,6 +207,90 @@ function MemberManagement({ socket }) {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {selectedMember && (
+          <div className="modal" onClick={() => setSelectedMember(null)}>
+            <div className="modal-content member-details-modal" onClick={(e) => e.stopPropagation()}>
+              <button 
+                className="modal-close"
+                onClick={() => setSelectedMember(null)}
+              >
+                ✕
+              </button>
+              <div className="member-details">
+                <div className="detail-header">
+                  <div className="member-avatar">{selectedMember.name.charAt(0).toUpperCase()}</div>
+                  <div className="member-info">
+                    <h2>{selectedMember.name}</h2>
+                    <p className="member-status">
+                      <span className="badge badge-success">{selectedMember.status}</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="detail-section">
+                  <h3>👤 Personal Information</h3>
+                  <div className="info-grid">
+                    <div className="info-item">
+                      <span className="label">Email:</span>
+                      <span className="value">{selectedMember.email || 'Not provided'}</span>
+                    </div>
+                    <div className="info-item">
+                      <span className="label">Phone:</span>
+                      <span className="value">{selectedMember.phone || 'Not provided'}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="detail-section">
+                  <h3>📍 Address</h3>
+                  <div className="info-grid">
+                    <div className="info-item full-width">
+                      <span className="label">Street Address:</span>
+                      <span className="value">{selectedMember.address || 'Not provided'}</span>
+                    </div>
+                    <div className="info-item">
+                      <span className="label">City:</span>
+                      <span className="value">{selectedMember.city || 'Not provided'}</span>
+                    </div>
+                    <div className="info-item">
+                      <span className="label">State:</span>
+                      <span className="value">{selectedMember.state || 'Not provided'}</span>
+                    </div>
+                    <div className="info-item">
+                      <span className="label">ZIP Code:</span>
+                      <span className="value">{selectedMember.zipCode || 'Not provided'}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="detail-section">
+                  <h3>📅 Membership</h3>
+                  <div className="info-grid">
+                    <div className="info-item">
+                      <span className="label">Member Since:</span>
+                      <span className="value">{new Date(selectedMember.membershipDate).toLocaleDateString()}</span>
+                    </div>
+                    <div className="info-item">
+                      <span className="label">Member ID:</span>
+                      <span className="value">{selectedMember.id.substring(0, 8)}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="detail-actions">
+                  <button className="btn btn-primary">View Borrow History</button>
+                  <button 
+                    className="btn btn-secondary"
+                    onClick={() => setSelectedMember(null)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}

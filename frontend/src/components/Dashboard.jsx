@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BarChart3, Users, BookOpen, TrendingUp } from 'lucide-react';
 import './Dashboard.css';
 
-function Dashboard({ socket }) {
+function Dashboard({ socket, setActiveTab }) {
   const [stats, setStats] = useState({
     totalBooks: 0,
     totalMembers: 0,
@@ -76,7 +76,11 @@ function Dashboard({ socket }) {
         <h2 className="dashboard-title">Dashboard</h2>
         
         <div className="stats-grid">
-          <div className="stat-card">
+          <div 
+            className="stat-card clickable-card"
+            onClick={() => setActiveTab('books')}
+            title="Click to view all books"
+          >
             <div className="stat-icon books-icon">
               <BookOpen size={32} />
             </div>
@@ -84,9 +88,14 @@ function Dashboard({ socket }) {
               <h3>Total Books</h3>
               <p className="stat-number">{stats.totalBooks}</p>
             </div>
+            <div className="card-action-hint">→</div>
           </div>
 
-          <div className="stat-card">
+          <div 
+            className="stat-card clickable-card"
+            onClick={() => setActiveTab('members')}
+            title="Click to view all members"
+          >
             <div className="stat-icon members-icon">
               <Users size={32} />
             </div>
@@ -94,9 +103,14 @@ function Dashboard({ socket }) {
               <h3>Members</h3>
               <p className="stat-number">{stats.totalMembers}</p>
             </div>
+            <div className="card-action-hint">→</div>
           </div>
 
-          <div className="stat-card">
+          <div 
+            className="stat-card clickable-card"
+            onClick={() => setActiveTab('borrow')}
+            title="Click to view active loans"
+          >
             <div className="stat-icon loans-icon">
               <TrendingUp size={32} />
             </div>
@@ -104,9 +118,14 @@ function Dashboard({ socket }) {
               <h3>Active Loans</h3>
               <p className="stat-number">{stats.activeLoans}</p>
             </div>
+            <div className="card-action-hint">→</div>
           </div>
 
-          <div className="stat-card">
+          <div 
+            className="stat-card clickable-card"
+            onClick={() => setActiveTab('borrow')}
+            title="Click to view overdue books"
+          >
             <div className="stat-icon overdue-icon">
               <BarChart3 size={32} />
             </div>
@@ -114,6 +133,7 @@ function Dashboard({ socket }) {
               <h3>Overdue Books</h3>
               <p className="stat-number" style={{ color: '#ef4444' }}>{stats.overdueBooks}</p>
             </div>
+            <div className="card-action-hint">→</div>
           </div>
         </div>
 

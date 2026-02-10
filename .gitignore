@@ -1,0 +1,11 @@
+node_modules/
+npm-debug.log*
+.npm
+.DS_Store
+.env
+.env.local
+.env.production.local
+*.log
+dist/
+build/
+.vercel/

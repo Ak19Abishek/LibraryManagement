@@ -8,7 +8,7 @@ function Header({ activeTab, setActiveTab }) {
       <div className="header-container">
         <div className="header-logo">
           <BookOpen size={32} />
-          <h1>📚 Library Manager</h1>
+          <h1>📚  அன்பு Library </h1>
         </div>
         
         <nav className="nav-tabs">
